@@ -1,0 +1,115 @@
+#include<bits/stdc++.h>
+#include <iterator>
+#include <iostream>
+#include <numeric>
+#include <math.h>
+#define ll long long
+#define ull long
+#define mpa make_pair
+#define pb push_back
+#define ff first
+#define pii pair<ll,ll>
+#define dd double
+#define trace(x) cerr << #x << " : " << x << endl
+#define ss second
+#define boost ios_base::sync_with_stdio(0)
+#define forp(i,a,b) for(ll i=a;i<=b;i++)
+#define rep(i,n)    for(ll i=0;i<n;++i)
+#define ren(i,n)    for(ll i=n-1;i>=0;i--)
+#define forn(i,a,b) for(ll i=a;i>=b;i--)
+#define all(c) (c).begin(),(c).end()
+#define tr(c,i) for(typeof((c).begin()) i = (c).begin(); i != (c).end();
+#define sc(x) scanf("%lld",&x)
+#define clr(x,val) memset(x,val,sizeof(x))
+#define pr(x) printf("%lld\n",x) 
+#define pdd pair<dd,dd>
+#define read_arr(a,n) for(ll i=1;i<=n;i++)cin>>a[i];
+#define init_arr(a,n) for(ll i=1;i<=n;i++)a[i]=n-i+1;
+#define prec(x) cout<<fixed<<setprecision(x)
+#define fre freopen("input.txt","r",stdin),freopen("output.txt","w",stdout)
+#define arr array 
+using namespace std;
+string s;
+ll sol[2000005];
+void solve(ll tc){
+	
+	
+	
+	ll n;
+	cin>>n>>s;
+
+	for(ll i=0;i<n;i++)sol[i]=1;
+
+	ll i=0;
+	while(i<n){
+		ll j=i+1;
+		ll c_len=1;
+		sol[j]=c_len;
+
+		while(j<n and s[j]>s[j-1]){
+			c_len++;
+			sol[j]=c_len;
+			j++;
+		}
+
+		i=j;
+
+	}
+	cout<<"Case #"<<tc<<": ";
+	for(ll i=0;i<n;i++)cout<<sol[i]<<" ";
+	cout<<endl;
+	
+
+	
+}
+	
+int main(){
+
+	boost;
+	ll t=1;
+	cin>>t;
+
+	ll tc=1;
+
+	while(t--){
+		solve(tc);
+		tc++;
+	}
+	
+
+}
+	
+	
+ 
+ 
+ 
+ 
+
+
+	
+
+	
+
+
+
+
+
+
+
+	
+	
+
+	
+	
+
+
+
+
+		
+
+
+    
+	
+
+
+		

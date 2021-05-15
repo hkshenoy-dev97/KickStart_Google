@@ -1,0 +1,159 @@
+#include<bits/stdc++.h>
+#include <iterator>
+#include <iostream>
+#include <numeric>
+#include <math.h>
+#define ll long long
+#define ull long
+#define mpa make_pair
+#define pb push_back
+#define ff first
+#define pii pair<ll,ll>
+#define dd double
+#define trace(x) cerr << #x << " : " << x << endl
+#define ss second
+#define boost ios_base::sync_with_stdio(0)
+#define forp(i,a,b) for(ll i=a;i<=b;i++)
+#define rep(i,n)    for(ll i=0;i<n;++i)
+#define ren(i,n)    for(ll i=n-1;i>=0;i--)
+#define forn(i,a,b) for(ll i=a;i>=b;i--)
+#define all(c) (c).begin(),(c).end()
+#define tr(c,i) for(typeof((c).begin()) i = (c).begin(); i != (c).end();
+#define sc(x) scanf("%lld",&x)
+#define clr(x,val) memset(x,val,sizeof(x))
+#define pr(x) prllf("%lld\n",x) 
+#define pdd pair<dd,dd>
+#define read_arr(a,n) for(ll i=1;i<=n;i++)cin>>a[i];
+#define init_arr(a,n) for(ll i=1;i<=n;i++)a[i]=n-i+1;
+#define prec(x) cout<<fixed<<setprecision(x)
+#define fre freopen("input.txt","r",stdin),freopen("output.txt","w",stdout)
+#define arr array 
+using namespace std;
+char a[55][55];
+vector<ll> adj[35];
+vector<ll> indeg(26,0);
+vector<ll> isp(26,0);
+void solve(ll tc){
+	ll n,m;
+	cin>>n>>m;
+	for(ll i=1;i<=n;i++){
+		for(ll j=1;j<=m;j++){
+			cin>>a[i][j];
+		}
+	}
+
+	for(ll i=0;i<26;i++){
+		adj[i].clear();
+		indeg[i]=0;
+		isp[i]=0;
+	}
+	
+	
+
+	for(ll i=n;i>=1;i--){
+		for(ll j=1;j<=m;j++){
+			if(i==n){
+				isp[a[i][j]-'A']=1;
+			}else{
+				isp[a[i][j]-'A']=1;
+				if(a[i][j] != a[i+1][j]){
+					indeg[a[i][j]-'A']++;
+					adj[a[i+1][j]-'A'].pb(a[i][j]-'A');
+				}
+			}
+		}
+	}
+
+	queue<ll> q;
+	ll sz=0;
+	vector<int> sol;
+
+	for(ll i=0;i<26;i++){
+		if(isp[i]){
+			sz++;
+			if(indeg[i]==0)q.push(i);
+		}
+	}
+
+	
+	
+	
+
+	while(q.size()){
+		auto v=q.front();
+		q.pop();
+		sol.pb(v);
+		
+		for(auto to:adj[v]){
+			indeg[to]--;
+			if(indeg[to]==0)q.push(to);
+		}
+	}
+	
+	
+
+
+	if(sol.size()!=sz){
+		cout<<"Case #"<<tc<<": "<<-1<<endl;
+		return;
+	}else{
+		string y;
+		for(auto ch:sol)y+=char('A'+ch);
+		cout<<"Case #"<<tc<<": "<<y<<endl;
+		return;
+	}
+
+	
+
+
+}
+
+int main(){
+
+	ll t;
+	t=1;
+	cin>>t;
+
+	ll tc=1;
+
+	while(t--){
+		solve(tc);
+		tc++;
+	}
+
+}
+	
+	
+ 
+ 
+ 
+ 
+
+
+	
+
+	
+
+
+
+
+
+
+
+	
+	
+
+	
+	
+
+
+
+
+		
+
+
+    
+	
+
+
+		
